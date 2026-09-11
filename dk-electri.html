@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="only light">
+<title>D&amp;K Electric — Electrician in St. Thomas, USVI</title>
+<meta name="description" content="D&amp;K Electric is a family owned and operated electrical contractor on St. Thomas. Panel upgrades, rewiring, lighting, generator hookups, repairs and troubleshooting for homes and small businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --panel:#172029;
+    --panel-deep:#0F161D;
+    --copper:#B4642F;
+    --copper-deep:#96521F;
+    --copper-bright:#D9803F; /* copper for use on the dark panels */
+    --amber:#F2B138;
+    --wall:#FFFFFF;
+    --wall-2:#EFEEEA;
+    --line:#CBC9C2;
+    --text:#12181E;
+    --muted:#2B333B;
+    --on-dark:#F5F6F7;
+    --on-dark-2:#D8DEE4;
+    --on-deep-2:#BFC7CF;
+    --max:64rem;
+    --bar-h:3.75rem;
+  }
+
+  /* This site commits to one light look: every colour below is explicit,
+     so no dark-mode setting, viewer theme or "auto dark" feature can
+     recolour the text into its background. */
+  html{color-scheme:only light;-webkit-text-size-adjust:100%}
+
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+
+  body{
+    margin:0;
+    background:var(--wall);
+    color:var(--text);
+    font-family:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    font-weight:400;
+    font-variation-settings:'wdth' 100,'wght' 400;
+    font-size:1.0625rem;
+    line-height:1.6;
+  }
+
+  a{color:inherit}
+
+  a:focus-visible,button:focus-visible,
+  input:focus-visible,textarea:focus-visible{
+    outline:3px solid var(--amber);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 1.5rem;
+  }
+
+  /* Weight is set with both font-weight and the variable axis, so headings
+     stay bold even if the web font is blocked and a system font fills in. */
+  h1,h2,h3{
+    margin:0;
+    font-weight:800;
+    font-variation-settings:'wdth' 115,'wght' 800;
+    letter-spacing:-0.015em;
+    line-height:1.05;
+    text-wrap:balance;
+  }
+
+  p{margin:0 0 1rem;max-width:36em}
+
+  .sr-only{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+
+  /* ---------- top bar (sticks to the top while you scroll) ---------- */
+
+  .bar{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--panel-deep);
+    color:var(--on-dark);
+    border-bottom:1px solid rgba(255,255,255,.14);
+    box-shadow:0 6px 18px rgba(0,0,0,.28);
+  }
+  .bar .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    min-height:var(--bar-h);
+  }
+  .mark{
+    font-weight:900;
+    font-variation-settings:'wdth' 118,'wght' 900;
+    font-size:1.0625rem;
+    letter-spacing:.02em;
+    white-space:nowrap;
+  }
+  .mark .amp{color:var(--copper-bright)}
+  .bar a.tel{
+    flex-shrink:0;
+    text-decoration:none;
+    font-weight:700;
+    font-variation-settings:'wdth' 100,'wght' 700;
+    font-size:.9375rem;
+    background:var(--amber);
+    color:#141B22;
+    border-radius:2px;
+    padding:.5rem .9rem;
+    white-space:nowrap;
+    font-variant-numeric:tabular-nums;
+  }
+  .bar a.tel:hover{background:#FFC552}
+
+  /* ---------- hero ---------- */
+
+  .hero{
+    position:relative;
+    background:var(--panel);
+    color:var(--on-dark);
+    overflow:hidden;
+    padding:6rem 0 5rem;
+  }
+  .glow{
+    position:absolute;
+    top:-16rem;left:50%;
+    width:min(58rem,150vw);
+    height:min(58rem,150vw);
+    transform:translateX(-50%);
+    background:radial-gradient(circle at center,
+      rgba(242,177,56,.22) 0%,
+      rgba(242,177,56,.09) 32%,
+      rgba(180,100,47,.05) 52%,
+      rgba(23,32,41,0) 72%);
+    pointer-events:none;
+    opacity:0;
+    animation:lightUp 1.5s ease-out .15s forwards;
+  }
+  @keyframes lightUp{to{opacity:1}}
+
+  .hero .wrap{position:relative}
+
+  .wordmark{
+    font-size:clamp(3.25rem,13vw,7.5rem);
+    font-weight:900;
+    font-variation-settings:'wdth' 122,'wght' 900;
+    letter-spacing:-0.03em;
+    line-height:.92;
+    margin-bottom:1.5rem;
+    color:#FFFFFF;
+  }
+  .wordmark .amp{
+    color:var(--amber);
+    font-weight:700;
+    font-variation-settings:'wdth' 100,'wght' 700;
+  }
+  .hero .lede{
+    font-size:clamp(1.125rem,2.6vw,1.5rem);
+    line-height:1.35;
+    font-weight:500;
+    font-variation-settings:'wdth' 105,'wght' 500;
+    max-width:20em;
+    color:var(--on-dark);
+    margin-bottom:.75rem;
+  }
+  .hero .sub{
+    color:var(--on-dark-2);
+    font-size:1.0625rem;
+    max-width:30em;
+  }
+  .cta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.75rem;
+    margin-top:2.25rem;
+  }
+  .btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:.85rem 1.5rem;
+    border-radius:2px;
+    font-weight:700;
+    font-variation-settings:'wdth' 105,'wght' 700;
+    font-size:1.0625rem;
+    line-height:1.3;
+  }
+  .btn-primary{background:var(--amber);color:#141B22}
+  .btn-primary:hover{background:#FFC552}
+  .btn-ghost{
+    border:1px solid rgba(255,255,255,.45);
+    color:#FFFFFF;
+  }
+  .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+
+  /* ---------- generic section ---------- */
+
+  .band{padding:4.5rem 0;background-color:var(--wall);color:var(--text)}
+  .band-wall2{background-color:var(--wall-2)}
+
+  .band h2{
+    font-size:clamp(1.75rem,4vw,2.5rem);
+    margin-bottom:1.5rem;
+    color:var(--text);
+  }
+  .band h3,.band p,.band dt,.band li,.band strong,.band a{color:var(--text)}
+  .band dd,.band .svc-note,.band .creds,.band .contact-grid p,.band .who,.band .intro{color:var(--muted)}
+
+  /* ---------- family (dark, same treatment as the hero) ---------- */
+
+  .band-dark{
+    background-color:var(--panel);
+    border-top:1px solid rgba(255,255,255,.10);
+  }
+  .band-dark h2{color:#FFFFFF}
+  .band-dark p{color:var(--on-dark)}
+  .band-dark li,.band-dark a{color:var(--on-dark-2)}
+  .family p{font-size:1.125rem;line-height:1.65}
+  .family p:last-of-type{margin-bottom:0}
+
+  /* ---------- services ---------- */
+
+  .svc{
+    margin:0;
+    border-top:1px solid var(--line);
+  }
+  .svc .row{
+    display:grid;
+    grid-template-columns:14rem 1fr;
+    gap:1rem 2rem;
+    padding:1.15rem 0;
+    border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .svc dt{
+    font-weight:700;
+    font-variation-settings:'wdth' 108,'wght' 700;
+    font-size:1.0625rem;
+  }
+  .svc dd{
+    margin:0;
+    max-width:34em;
+  }
+
+  .svc-note{
+    margin-top:1.75rem;
+    font-size:.9375rem;
+  }
+
+  /* ---------- reviews ---------- */
+
+  .intro{margin-bottom:0}
+
+  .points{
+    display:grid;
+    gap:2.25rem 2.5rem;
+    grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));
+    margin-top:2.25rem;
+  }
+  .point{
+    border-top:3px solid var(--amber);
+    padding-top:1.1rem;
+  }
+  .point h3{
+    font-size:1.25rem;
+    font-weight:700;
+    font-variation-settings:'wdth' 108,'wght' 700;
+    margin-bottom:.6rem;
+  }
+  .point p{margin:0;max-width:none;color:var(--muted)}
+  .band .review-ask{
+    margin:2.5rem 0 0;
+    padding-top:1.25rem;
+    border-top:1px solid var(--line);
+    font-size:.9375rem;
+    color:var(--muted);
+  }
+
+  /* ---------- verse ---------- */
+
+  .verse{
+    background:var(--panel);
+    color:var(--on-dark);
+    padding:5rem 0;
+    text-align:center;
+  }
+  .verse blockquote{
+    margin:0 auto;
+    max-width:26em;
+  }
+  .verse .words{
+    font-size:clamp(1.375rem,4vw,2.125rem);
+    line-height:1.3;
+    font-weight:500;
+    font-variation-settings:'wdth' 100,'wght' 500;
+    letter-spacing:-0.01em;
+    margin:0 0 1.25rem;
+    max-width:none;
+    color:#FFFFFF;
+  }
+  .verse cite{
+    font-style:normal;
+    color:var(--amber);
+    font-size:.9375rem;
+    font-weight:700;
+    font-variation-settings:'wdth' 100,'wght' 700;
+    letter-spacing:.04em;
+  }
+  .filament{
+    width:2px;
+    height:3rem;
+    margin:0 auto 2rem;
+    background:linear-gradient(to bottom,rgba(242,177,56,0),var(--amber));
+  }
+
+  /* ---------- contact ---------- */
+
+  .tels{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1rem 2.5rem;
+    max-width:none;
+  }
+  .big-tel{
+    display:inline-block;
+    font-size:clamp(1.75rem,6vw,2.5rem);
+    font-weight:800;
+    font-variation-settings:'wdth' 112,'wght' 800;
+    letter-spacing:-0.02em;
+    text-decoration:none;
+    color:var(--text);
+    border-bottom:3px solid var(--copper);
+    padding-bottom:.15rem;
+    font-variant-numeric:tabular-nums;
+  }
+  .band .big-tel:hover{color:var(--copper-deep)}
+
+  .contact-grid{
+    display:grid;
+    gap:2.5rem;
+    grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
+    margin-top:2rem;
+  }
+  .contact-grid h3{
+    font-size:1rem;
+    font-weight:700;
+    font-variation-settings:'wdth' 100,'wght' 700;
+    margin-bottom:.4rem;
+  }
+  .contact-grid p{margin-bottom:0}
+  .contact-grid a{overflow-wrap:anywhere}
+
+  /* ---------- enquiry form ---------- */
+
+  .form-intro{margin-bottom:2rem}
+  .form{
+    display:grid;
+    gap:1.25rem;
+    grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
+    max-width:44rem;
+  }
+  .field{display:flex;flex-direction:column;gap:.4rem}
+  .field-wide{grid-column:1/-1}
+  .form label{
+    font-size:.9375rem;
+    font-weight:700;
+    font-variation-settings:'wdth' 100,'wght' 700;
+    color:var(--text);
+  }
+  .form input,.form textarea,.fallback textarea{
+    font-family:inherit;
+    font-size:1.0625rem;
+    line-height:1.5;
+    color:var(--text);
+    background:#FFFFFF;
+    border:1px solid #6B747D;
+    border-radius:2px;
+    padding:.7rem .75rem;
+    width:100%;
+  }
+  .form textarea,.fallback textarea{resize:vertical}
+  .form input:focus,.form textarea:focus,.fallback textarea:focus{
+    outline:3px solid var(--amber);
+    outline-offset:1px;
+    border-color:var(--text);
+  }
+  .btn-solid{
+    background:var(--panel);
+    color:#FFFFFF;
+    border:0;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .btn-solid:hover{background:var(--copper)}
+  .btn-line{
+    background:transparent;
+    color:var(--text);
+    border:1px solid var(--text);
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .btn-line:hover{border-color:var(--copper);color:var(--copper-deep)}
+  .form-actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+  .form-msg{
+    margin:0;
+    color:#A4301B;
+    font-weight:700;
+    font-variation-settings:'wdth' 100,'wght' 700;
+    font-size:.9375rem;
+  }
+  .fallback{
+    max-width:44rem;
+    margin-top:2rem;
+    padding-top:1.5rem;
+    border-top:1px solid var(--line);
+    display:grid;
+    gap:1rem;
+  }
+  .fallback p{margin:0;max-width:none}
+  .fallback .ok{
+    font-weight:700;
+    font-variation-settings:'wdth' 100,'wght' 700;
+    color:var(--text);
+  }
+
+  /* ---------- toast (feedback when a call button is clicked on a computer) ---------- */
+
+  .toast{
+    position:fixed;
+    left:50%;
+    bottom:1.25rem;
+    transform:translateX(-50%);
+    z-index:60;
+    max-width:min(92vw,30rem);
+    background:var(--panel-deep);
+    color:#FFFFFF;
+    border-left:4px solid var(--amber);
+    border-radius:2px;
+    padding:.85rem 1.1rem;
+    font-size:.9375rem;
+    line-height:1.45;
+    box-shadow:0 12px 32px rgba(0,0,0,.4);
+  }
+
+  /* ---------- footer ---------- */
+
+  footer{
+    background:var(--panel-deep);
+    color:var(--on-deep-2);
+    padding:2.5rem 0;
+    font-size:.9375rem;
+  }
+  footer .wrap{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:.75rem;
+  }
+  footer .mark{color:#FFFFFF;font-size:1rem}
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width:640px){
+    .hero{padding:4.5rem 0 3.5rem}
+    .band{padding:3.5rem 0}
+    .svc .row{grid-template-columns:1fr;gap:.25rem;padding:1rem 0}
+    .verse{padding:3.5rem 0}
+  }
+  @media (max-width:420px){
+    .bar .wrap{padding:0 1rem}
+    .mark{font-size:1rem}
+    .bar a.tel{font-size:.875rem;padding:.5rem .7rem}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .glow{animation:none;opacity:1}
+    *{transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="mark">D<span class="amp">&amp;</span>K ELECTRIC</span>
+    <a class="tel" href="tel:+15404256137" data-number="(540) 425-6137">Call (540) 425-6137</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <h1 class="wordmark">D<span class="amp">&amp;</span>K<br>Electric</h1>
+    <p class="lede">Wiring, panels, lighting and repairs for homes and small businesses.</p>
+    <p class="sub">Family owned and operated, three generations of electricians. The people who answer the phone are the same people who show up at your door.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="tel:+15404256137" data-number="(540) 425-6137">Call for an estimate</a>
+      <a class="btn btn-ghost" href="#services">See what we do</a>
+    </div>
+  </div>
+</section>
+
+<section class="band band-dark family" id="about">
+  <div class="wrap">
+    <h2>Three generations of electricians</h2>
+    <p>D&amp;K Electric was started by our family and it is still run by our family. Three generations of us have pulled wire for a living, and what the first one learned the hard way, the third one still does the right way.</p>
+    <p>No call centers, no rotating crews, no one you have never met walking through your house. We quote the job before we start it, we clean up after ourselves, and we tell you honestly when something can wait and when it cannot. Most of our work comes from neighbors telling neighbors, and we would like to keep it that way.</p>
+  </div>
+</section>
+
+<section class="band band-wall2" id="services">
+  <div class="wrap">
+    <h2>What we do</h2>
+    <dl class="svc">
+      <div class="row">
+        <dt>Panel upgrades</dt>
+        <dd>Service changes, breaker replacement, and getting an old fuse box up to current code.</dd>
+      </div>
+      <div class="row">
+        <dt>Rewiring and repairs</dt>
+        <dd>Knob and tube or aluminum replacement, damaged runs, and additions to existing circuits.</dd>
+      </div>
+      <div class="row">
+        <dt>Troubleshooting</dt>
+        <dd>Breakers that keep tripping, dead outlets, flickering lights, and burning smells. Call us before it gets worse.</dd>
+      </div>
+      <div class="row">
+        <dt>Lighting and fans</dt>
+        <dd>Recessed lighting, ceiling fans, under cabinet lighting, and exterior and security lights.</dd>
+      </div>
+      <div class="row">
+        <dt>Outlets and switches</dt>
+        <dd>New circuits, GFCI and AFCI protection, dedicated appliance lines, and dimmer installs.</dd>
+      </div>
+      <div class="row">
+        <dt>EV chargers</dt>
+        <dd>Level 2 charger installs sized to your panel, including the permit and inspection.</dd>
+      </div>
+      <div class="row">
+        <dt>Generator hookups</dt>
+        <dd>Transfer switches and inlets so you are ready before the next storm rolls through.</dd>
+      </div>
+      <div class="row">
+        <dt>Remodels and new work</dt>
+        <dd>Kitchens, baths, basements, garages, shops, and small commercial build outs.</dd>
+      </div>
+    </dl>
+    <p class="svc-note">Do not see your job on the list? Call and ask. If it is not something we do, we will tell you who does.</p>
+  </div>
+</section>
+
+<!--
+  REVIEWS
+  When you have real customer reviews, send them over and this section
+  becomes star-rated customer quotes. Until then it is D&K's own promises.
+-->
+<section class="band" id="reviews">
+  <div class="wrap">
+    <h2>Neighbors telling neighbors</h2>
+    <p class="intro">Most of our work comes from word of mouth. Here is why people pass our number along.</p>
+
+    <div class="points">
+      <div class="point">
+        <h3>A real arrival window</h3>
+        <p>You get a window, not a whole day. If something changes, you hear it from us before you start wondering.</p>
+      </div>
+      <div class="point">
+        <h3>A written price before we start</h3>
+        <p>No surprises on the invoice. If we open something up and find more, we stop and talk to you before we go any further.</p>
+      </div>
+      <div class="point">
+        <h3>Honest about what can wait</h3>
+        <p>Not every problem is an emergency. We tell you which is which, even when that means a smaller job for us.</p>
+      </div>
+    </div>
+
+    <p class="review-ask">Have we done work for you? <a href="mailto:DksElectrics@gmail.com?subject=Review%20for%20D%26K%20Electric">Send us a few words</a> and we will add them here.</p>
+  </div>
+</section>
+
+<section class="verse">
+  <div class="wrap">
+    <div class="filament" aria-hidden="true"></div>
+    <blockquote>
+      <p class="words">Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven.</p>
+      <cite>Matthew 5:16</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p class="tels">
+      <a class="big-tel" href="tel:+15404256137" data-number="(540) 425-6137">(540) 425-6137</a>
+      <a class="big-tel" href="tel:+13405133909" data-number="(340) 513-3909">(340) 513-3909</a>
+    </p>
+    <div class="contact-grid">
+      <div>
+        <h3>Email</h3>
+        <p><a href="mailto:DksElectrics@gmail.com">DksElectrics@gmail.com</a></p>
+      </div>
+      <div>
+        <h3>Service area</h3>
+        <p>St. Thomas, U.S. Virgin Islands, and the surrounding islands</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band-wall2" id="enquiry">
+  <div class="wrap">
+    <h2>Tell us what you need</h2>
+    <p class="form-intro">Fill this out and it will open your mail app with the details ready to send. Or just call — we answer.</p>
+
+    <form class="form" id="enquiry-form" novalidate>
+      <div class="field">
+        <label for="f-name">Your name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="f-phone">Phone</label>
+        <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+      </div>
+      <div class="field field-wide">
+        <label for="f-place">Address or area</label>
+        <input id="f-place" name="place" type="text" autocomplete="street-address">
+      </div>
+      <div class="field field-wide">
+        <label for="f-job">What is the job?</label>
+        <textarea id="f-job" name="job" rows="5" placeholder="Panel upgrade, outlet not working, new lighting, and so on."></textarea>
+      </div>
+      <div class="field-wide form-actions">
+        <button class="btn btn-solid" id="f-send" type="submit">Send request</button>
+        <p class="form-msg" id="f-msg" role="alert" hidden></p>
+      </div>
+    </form>
+
+    <div class="fallback" id="f-fallback" hidden>
+      <p class="ok" id="f-ok">Your mail app should now be open with this request.</p>
+      <p>If it did not open, copy the text below and email it to <a href="mailto:DksElectrics@gmail.com">DksElectrics@gmail.com</a>, or just call <a href="tel:+15404256137" data-number="(540) 425-6137">(540) 425-6137</a>.</p>
+      <label class="sr-only" for="f-copy">Your request</label>
+      <textarea id="f-copy" rows="7" readonly></textarea>
+      <div class="form-actions">
+        <button class="btn btn-line" id="f-copybtn" type="button">Copy request</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="mark">D<span class="amp">&amp;</span>K ELECTRIC</span>
+    <span>Family owned and operated &middot; Licensed and insured</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function(){
+  var EMAIL = 'DksElectrics@gmail.com';
+
+  /* ---- small on-page notice, used instead of alert() ---- */
+  var toast = document.getElementById('toast');
+  var toastTimer = null;
+  function notice(message){
+    if(!toast) return;
+    toast.textContent = message;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.hidden = true; }, 6000);
+  }
+
+  /* ---- call buttons ----
+     On a phone, tel: links open the dialer by themselves. On a computer
+     with no calling app they can look like they did nothing, so show the
+     number on screen as confirmation. */
+  var onComputer = !!(window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches);
+  var tels = document.querySelectorAll('a[href^="tel:"]');
+  for(var i = 0; i < tels.length; i++){
+    tels[i].addEventListener('click', function(){
+      if(onComputer){
+        var number = this.getAttribute('data-number') || this.textContent.replace(/^\s*Call\s*/i,'');
+        notice('Calling ' + number + '. If this computer cannot place calls, dial that number from your phone.');
+      }
+    });
+  }
+
+  /* ---- in-page buttons like "See what we do" ---- */
+  var barHeight = function(){
+    var bar = document.querySelector('.bar');
+    return bar ? bar.getBoundingClientRect().height : 0;
+  };
+  var jumps = document.querySelectorAll('a[href^="#"]');
+  for(var j = 0; j < jumps.length; j++){
+    jumps[j].addEventListener('click', function(ev){
+      var id = this.getAttribute('href').slice(1);
+      var target = id ? document.getElementById(id) : null;
+      if(!target) return;
+      ev.preventDefault();
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - barHeight();
+      try{
+        window.scrollTo({top: top, behavior: reduce ? 'auto' : 'smooth'});
+      }catch(e){
+        window.scrollTo(0, top);
+      }
+      try{ history.replaceState(null, '', '#' + id); }catch(e){}
+    });
+  }
+
+  /* ---- enquiry form ---- */
+  var form = document.getElementById('enquiry-form');
+  var msg = document.getElementById('f-msg');
+  var fallback = document.getElementById('f-fallback');
+  var copyBox = document.getElementById('f-copy');
+  var copyBtn = document.getElementById('f-copybtn');
+
+  function val(id){
+    var el = document.getElementById(id);
+    return el && el.value ? el.value.trim() : '';
+  }
+  function showMsg(text){
+    if(!msg) return;
+    msg.textContent = text;
+    msg.hidden = !text;
+  }
+
+  if(form){
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var name = val('f-name');
+      var phone = val('f-phone');
+      var place = val('f-place');
+      var job = val('f-job');
+
+      if(!name){
+        showMsg('Please add your name so we know who to call back.');
+        document.getElementById('f-name').focus();
+        return;
+      }
+      if(!phone && !job){
+        showMsg('Please add a phone number or a note about the job.');
+        document.getElementById('f-phone').focus();
+        return;
+      }
+      showMsg('');
+
+      var subject = 'Work request from ' + name;
+      var body =
+        'Name: ' + name + '\n' +
+        'Phone: ' + (phone || '(not given)') + '\n' +
+        'Address or area: ' + (place || '(not given)') + '\n\n' +
+        'Job:\n' + (job || '(not given)') + '\n';
+
+      if(copyBox){ copyBox.value = 'To: ' + EMAIL + '\nSubject: ' + subject + '\n\n' + body; }
+      if(fallback){ fallback.hidden = false; }
+      if(copyBtn){ copyBtn.textContent = 'Copy request'; }
+
+      window.location.href = 'mailto:' + EMAIL
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      if(fallback){
+        try{ fallback.scrollIntoView({block: 'nearest', behavior: 'smooth'}); }catch(e){}
+      }
+    });
+  }
+
+  if(copyBtn && copyBox){
+    copyBtn.addEventListener('click', function(){
+      var text = copyBox.value;
+      var done = function(ok){
+        copyBtn.textContent = ok ? 'Copied' : 'Select the text above and copy it';
+        if(ok){ setTimeout(function(){ copyBtn.textContent = 'Copy request'; }, 2500); }
+      };
+      var legacy = function(){
+        var ok = false;
+        try{
+          copyBox.focus();
+          copyBox.select();
+          ok = document.execCommand('copy');
+        }catch(e){ ok = false; }
+        done(ok);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){ done(true); }, legacy);
+      }else{
+        legacy();
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
